@@ -1,0 +1,35 @@
+terraform {
+  required_providers {
+    aws = {
+      source  = "registry.terraform.io/hashicorp/aws"
+      version = "~> 5.46"
+    }
+  }
+}
+
+# authenticate to aws cloud
+provider "aws" {
+region     = "ap-south-1"
+
+
+# here access key and secret key has change
+
+
+
+access_key = "AKIARR7NT7LLIHJAIkdfjdffgf"
+secret_key = "jjjjgfkjgfdkgjfdkg/P/MX+"
+  
+}
+
+# Block name "Resource Type" local name
+resource "aws_instance" "os1" {
+# argument (argument reference key = value)
+	ami = "ami-001843b876406202a"
+	instance_type = "t2.micro"
+	tags  = {
+    			Name = "myosbyTF"
+ 		}
+
+
+
+}
