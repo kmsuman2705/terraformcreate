@@ -1,4 +1,8 @@
 terraform {
+
+  # here we can mention terraform version
+  # terraform.exe version
+  required_version = "~> 1.8.1"
   required_providers {
     aws = {
       source  = "registry.terraform.io/hashicorp/aws"
@@ -10,8 +14,8 @@ terraform {
 # authenticate to aws cloud
 provider "aws" {
 region     = "ap-south-1"
-# access_key = "AKIARR7NT7L2"
-# secret_key = "H/fVq1V+FGfp+bMV9F9036xxK5Cvyd"
+# access_key = "AKIARR7NT7T4OK2"
+# secret_key = "H/fVq1V9F9036xxk7z04lcIZVK5Cvyd"
 
 }
   
