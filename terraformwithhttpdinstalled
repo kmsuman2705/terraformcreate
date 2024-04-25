@@ -10,8 +10,8 @@ terraform {
 # authenticate to aws cloud
 provider "aws" {
 region     = "ap-south-1"
-access_key = "AKIARR7NT7LLIHJ"
-secret_key = "OiBlr8QmzSy05AKzpbD4QzO9z6acviO/P/MX+"
+# access_key = "AKIARR7NT7L2"
+# secret_key = "H/fVq1V+FGfp+bMV9F9036xxK5Cvyd"
 
 }
   
@@ -54,6 +54,32 @@ provisioner "remote-exec" {
 
 }
 
+
+
+resource "aws_ebs_volume" "myvol" {
+  availability_zone = aws_instance.os1.availability_zone
+  size              = 1
+
+  tags = {
+    Name = "mywebvol"
+  }
+}
+
+# add more resources 
+
+resource "aws_volume_attachment" "my_ebs_attach_ec2" {
+  device_name = "/dev/sdh"
+  volume_id   = aws_ebs_volume.myvol.id
+  instance_id = aws_instance.os1.id
+}
+
+
+
+
+
+
+
+
 # attribute reference
 
 output  "Public_IP" {
@@ -61,6 +87,12 @@ output  "Public_IP" {
 }
 
 
+
+
 output  "OS_state" {
  value = aws_instance.os1.instance_state
+}
+
+output "OS_AZ_name" {
+ value = aws_instance.os1.availability_zone
 }
